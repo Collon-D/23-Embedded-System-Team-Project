@@ -1,1 +1,1 @@
-# 23-Embedded-System-Team-Project
+# 23년 임베디드시스템 7조 팀프로젝트
