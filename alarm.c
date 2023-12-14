@@ -1,5 +1,6 @@
 #include "alarm.h"
 #include "sensor.h"
+#include "bluetooth.h"
 
 double scale4[12] = {
     261.6256, 277.1826, 293.6648,
@@ -649,6 +650,7 @@ void *musicPlay(void *args){
 void *alarmPlay(void *args)
 {
     printf("알람 쓰레드 생성\n");
+    int fd = *((int*)args); // 디바이스 파일 서술자
     char current_time[17];
     initMyTone(SPEAKER, 0);
 
@@ -658,14 +660,18 @@ void *alarmPlay(void *args)
         delay(100);
         ct = time(NULL);
         tm = *localtime(&ct);
+        if (serialRead(fd) == 'q'){
+            printf("알람 쓰레드 강제종료\n");
+            serialWrite(fd, " 알람 종료\n");
+            pthread_exit(NULL);
+        }
         sprintf(current_time, "%4d.%02d.%02d.%02d.%02d",
                 tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min);
         pthread_mutex_lock(&alarm_mutex);
         if (!strcmp(current_time, current_alarm)) flag = 0; // 같으면 while 탈출
-        
         pthread_mutex_unlock(&alarm_mutex);
     }
-    
+    serialWrite(fd, " 알람 시작\n");
     pthread_t music_thread;
     if (pthread_create(&music_thread, NULL, musicPlay, NULL) != 0) {
         perror("Failed to create music thread");
@@ -688,7 +694,6 @@ void *alarmPlay(void *args)
         }
     }
 
-    printf("알람 쓰레드 종료\n");
     
     if (pthread_join(sensor_thread, NULL) != 0) {
         perror("Failed to join Sensor Thread");
@@ -699,6 +704,9 @@ void *alarmPlay(void *args)
         perror("Failed to join music thread");
         exit(1);
     }
+    
+    printf("알람 쓰레드 종료\n");
+    serialWrite(fd, " 알람 종료\n");
 
     return NULL;
 }

@@ -17,6 +17,7 @@ int status;
 time_t ct;
 struct tm tm;
 
+
 void init();    // 모든 초기화 작업
 
 /* --------------------------- */
