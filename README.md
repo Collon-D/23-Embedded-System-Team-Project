@@ -1,4 +1,4 @@
-![image](https://github.com/Collon-D/23-Embedded-System-Team-Project/assets/97171985/56460f99-5881-4e4c-b96e-09982253015e)# 원격 제어 알람
+# 원격 제어 알람
 라즈베리 파이를 이용한 알람 프로그램
 
 ### 목차
