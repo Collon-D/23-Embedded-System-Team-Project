@@ -34,6 +34,10 @@
 ```bash
 $ make
 ```
+- 생성 파일 삭제
+```bash
+$ make clean
+```
 - 실행
 ```bash
 $ ./Alarm
