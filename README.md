@@ -73,6 +73,7 @@ $ ./Alarm
 
 
 - 소프트웨어 구조
+![시스템 구조도 수정](https://github.com/Collon-D/23-Embedded-System-Team-Project/assets/138470360/5d012957-f04a-41b3-8662-cf56c07ef5f7)
 
 
 <br/>
@@ -87,4 +88,6 @@ $ ./Alarm
 
 <br/>
 
+## 📅 간트 차트
+![간트차트_최종](https://github.com/Collon-D/23-Embedded-System-Team-Project/assets/138470360/f357a190-7ab5-4c28-9ee8-4a201ac6741b)
 
