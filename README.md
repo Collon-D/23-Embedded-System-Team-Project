@@ -70,7 +70,7 @@ $ ./Alarm
 
 ## 🔧 전체 시스템 구조
 - 하드웨어 구조
-![Untitled Sketch_bb](https://github.com/Collon-D/23-Embedded-System-Team-Project/assets/108410316/74bf7a84-3fda-4164-86a3-8e493effb90e)
+![Untitled Sketch_bb](https://github.com/Collon-D/23-Embedded-System-Team-Project/assets/108410316/74bf7a84-3fda-4164-86a3-8e493effb90e){: width="70%" height="70%"}
 
 - 소프트웨어 구조
 ![시스템 구조도 수정](https://github.com/Collon-D/23-Embedded-System-Team-Project/assets/138470360/5d012957-f04a-41b3-8662-cf56c07ef5f7)
