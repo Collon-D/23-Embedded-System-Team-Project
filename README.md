@@ -18,8 +18,8 @@
 <br/>
 
 ## 📆 개발 기간
-* 23.11.04일 - 23.12.14일
-
+* 23.12.04일 - 23.12.14일
+![간트차트_최종](https://github.com/Collon-D/23-Embedded-System-Team-Project/assets/138470360/f357a190-7ab5-4c28-9ee8-4a201ac6741b)
 <br/>
 
 ## 🧑‍🤝‍🧑 맴버 구성
@@ -87,7 +87,4 @@ $ ./Alarm
 ## 🎥 데모 영상 
 
 <br/>
-
-## 📅 간트 차트
-![간트차트_최종](https://github.com/Collon-D/23-Embedded-System-Team-Project/assets/138470360/f357a190-7ab5-4c28-9ee8-4a201ac6741b)
 
