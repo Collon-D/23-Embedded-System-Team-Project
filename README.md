@@ -58,7 +58,7 @@ $ ./Alarm
 - 실행이 되면 Newjeans - ditto가 알림음으로 소리가 나온다.
 ### 초음파 센서
 - 실행이 되면 물체와의 거리를 탐지한다.
-- 거리가 ? 이하가 되고 3초이상 유지된다면 값 변경후 종료된다. /todo!/
+- 거리가 15cm 이하가 되고 3초이상 유지된다면 값 변경후 종료된다.
 <br/>
 
 ## 📟 모듈
@@ -81,6 +81,57 @@ $ ./Alarm
 ## 💊 문제점 및 해결 방안
 - 알람을 종료하고 나면 이전에 사용한 알람 시간값을 가지고 알람 한번더 실행되는 문제
   - if문을 사용하여 해결
+
+문제 코드
+```c
+void *readBluetoothData(void *data){
+	int fd = *((int *)data); //디바이스 파일 서술자
+	char input_alarm[20]; // 블루투스 데이터 저장
+
+	while(1){
+		if (serialDataAvail(fd)){ 
+			pthread_mutex_lock(&alarm_mutex); // 뮤텍스 잠금
+			serialReadBytes(fd, input_alarm, 16); //16 = length of 'yyyy.mm.dd.hh.mm'
+			input_alarm[16] = '\0';
+			strcpy(current_alarm, input_alarm);
+			pthread_mutex_unlock(&alarm_mutex); // 뮤텍스 잠금 해제	
+			
+			printf ("Return Alarm : %s\n", current_alarm) ; 
+		} 
+		delay (1);
+	}
+}
+```
+
+해결 코드
+```c
+void *readBluetoothData(void *args) {
+   printf("블루투스 쓰레드 생성\n");
+   int fd = *((int*)args); // 디바이스 파일 서술자
+   char input_alarm[50];  // 블루투스 데이터 저장
+   int setAlarm = 0;
+   //...생략
+   while (1) {
+	   delay(200);
+	   if (serialDataAvail(fd)) {
+		   if (serialReadBytes(fd, input_alarm, 16)) { 
+				input_alarm[16] = '\0';
+				setAlarm++;
+		   }
+	   }
+       if (setAlarm == 1) {
+           delay(100);
+           pthread_mutex_lock(&alarm_mutex);
+           strcpy(current_alarm, input_alarm);
+           pthread_mutex_unlock(&alarm_mutex);
+
+           printf("Input Alarm : %s\n", input_alarm);
+            //...생략
+		       setAlarm = 0;
+       }
+   }
+}
+```
 
 <br/>
 
