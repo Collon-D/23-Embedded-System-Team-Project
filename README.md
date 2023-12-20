@@ -136,6 +136,5 @@ void *readBluetoothData(void *args) {
 <br/>
 
 ## 🎥 데모 영상 
-https://www.youtube.com/watch?v=Xqf82Hni_yA&ab_channel=%EC%98%81%EC%83%81%EC%97%85%EB%A1%9C%EB%93%9C%EC%9A%A9%EC%B1%84%EB%84%90
 <br/>
-
+https://www.youtube.com/watch?v=Xqf82Hni_yA&ab_channel=%EC%98%81%EC%83%81%EC%97%85%EB%A1%9C%EB%93%9C%EC%9A%A9%EC%B1%84%EB%84%90
